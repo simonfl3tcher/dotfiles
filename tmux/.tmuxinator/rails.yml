@@ -1,0 +1,21 @@
+# ~/.tmuxinator/rails.yml
+
+name: <%= @settings["workspace"] %>
+root: ~/Documents/Rails/<%= @settings["workspace"] %>
+
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - v
+  - tests:
+      layout: main-horizontal
+      panes:
+        - bundle exec rake test
+        - 
+  - console:
+      layout: tiled
+      panes:
+        - bundle exec rails c
+        - bundle exec foreman start
+        - tail -f log/development.log

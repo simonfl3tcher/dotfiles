@@ -1,0 +1,33 @@
+[init]
+  templatedir = ~/.git_template
+[push]
+  default = current
+[color]
+  ui = auto
+[alias]
+  aa = add --all
+  ap = add --patch
+  branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+  ci = commit -v
+  co = checkout
+  pf = push --force-with-lease
+  st = status
+  lg = log --pretty=oneline
+[core]
+	excludesfile = /Users/simonfletcher/.global_ignore
+  autocrlf = input
+[commit]
+  template = ~/.gitmessage
+[fetch]
+  prune = true
+[rebase]
+  autosquash = true
+[include]
+  path = ~/.gitconfig.local
+[user]
+	name = Simon Fletcher
+	email = simonfletcher0@gmail.com
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

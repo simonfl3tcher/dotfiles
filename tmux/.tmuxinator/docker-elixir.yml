@@ -1,0 +1,23 @@
+# ~/.tmuxinator/elixir-docker.yml
+
+name: <%= @settings["workspace"] %>
+root: ~/Documents/Elixir/<%= @settings["workspace"] %>
+
+pre: "cd ~/Documents/Elixir/<%= @settings['workspace'] %> && docker-machine rm -f <%= @settings['workspace'] %> && docker-machine create -d virtualbox <%= @settings['workspace'] %> && eval $(docker-machine env <%= @settings['workspace'] %>) && docker-compose up --build -d"
+pre_window: "eval $(docker-machine env <%= @settings['workspace'] %>)"
+
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - v
+  - tests:
+      layout: main-vertical
+      panes:
+        -
+  - console:
+      layout: tiled
+      panes:
+        - iex
+        - docker-machine env <%= @settings['workspace'] %>
+        - docker logs -f --tail="all" `docker ps -aqf "name=<%= @settings['workspace'] %>_web"`
