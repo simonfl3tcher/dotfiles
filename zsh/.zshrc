@@ -114,7 +114,9 @@ bindkey -v
 bindkey '^R' history-incremental-search-backward
 
 # Added by the Heroku Toolbelt
+export GOPATH=$HOME/go
 export PATH="/usr/local/heroku/bin:$PATH"
+export PATH=$GOPATH/bin:$PATH
 
 # ASDF
 . $HOME/.asdf/asdf.sh

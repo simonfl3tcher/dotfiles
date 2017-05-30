@@ -23,6 +23,8 @@ Plug 'slashmili/alchemist.vim'
 Plug 'craigemery/vim-autotag'
 Plug 'neomake/neomake'
 Plug 'fatih/vim-go'
+Plug 'posva/vim-vue'
+Plug 'elmcast/elm-vim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -67,6 +69,7 @@ set undoreload=10000        " set lines to save for undo
 
 """ Buffers
 set hidden " allow hidden buffers
+
 
 
 
