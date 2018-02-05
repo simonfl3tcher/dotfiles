@@ -88,7 +88,7 @@ alias ohmyzsh="v ~/.oh-my-zsh"
 alias b='bundle install --binstubs .bundle/bin --path .bundle/gems'
 
 # Wipe rails DB
-alias pdb="bundle exec rake db:drop db:create db:migrate db:seed"
+alias pdb="bundle exec rake db:drop db:create db:migrate db:seed RAILS_ENV=development"
 
 # List PSQL processes
 alias listpsql="lsof -i tcp:5432"
@@ -102,7 +102,7 @@ alias godocs="godoc --http=:6060 -d"
 alias v='nvim'
 
 aws_ssh() {
-  ssh -i ~/.ssh/id_rsa.pub ec2-user@$1
+  ssh -i ~/.ssh/id_rsa.pub simon@$1
 }
 
 # Source Files
@@ -121,3 +121,12 @@ export PATH=$GOPATH/bin:$PATH
 # ASDF
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
+export SPACESHIP_TIME_SHOW=true
+export SPACESHIP_NODE_SHOW=false
+export SPACESHIP_BATTERY_SHOW='always'
+export SPACESHIP_HOST_SHOW_FULL=true
+export SPACESHIP_HOST_SHOW='always'
+prompt spaceship

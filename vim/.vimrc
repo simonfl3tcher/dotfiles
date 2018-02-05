@@ -14,17 +14,15 @@ Plug 'sheerun/vim-polyglot'   " language packs
 Plug 'tpope/vim-commentary'   " better commenting
 Plug 'tpope/vim-fugitive'     " git plugin
 Plug 'tpope/vim-rails'        " rails plugin
-Plug 'tpope/vim-vinegar'      " netrw sensible defaults
 Plug 'rking/ag.vim'           " silver searcher
 Plug 'kien/ctrlp.vim'         " Quick file fuzzy search
-Plug 'c-brenn/phoenix.vim'    " Rails Vim for Phoenix
-Plug 'tpope/vim-projectionist'
-Plug 'slashmili/alchemist.vim'
 Plug 'craigemery/vim-autotag'
 Plug 'neomake/neomake'
-Plug 'fatih/vim-go'
-Plug 'posva/vim-vue'
-Plug 'elmcast/elm-vim'
+Plug 'fatih/vim-go' 
+Plug 'ecomba/vim-ruby-refactoring' " Quickly refactor ruby code https://github.com/ecomba/vim-ruby-refactoring#default-bindings
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -70,81 +68,38 @@ set undoreload=10000        " set lines to save for undo
 """ Buffers
 set hidden " allow hidden buffers
 
+autocmd! BufWritePost * Neomake
+
+set timeoutlen=1000 ttimeoutlen=0
+
+""" Write/Quit
+command! WQ wq " WQ = wq
+command! Wq wq " Wq = wq
+command! W w   " W = w
+command! Q q   " Q = q
+
+""" Neomake
+let g:neomake_open_list=2
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+let test#strategy = 'vimux' " use vimux test strategy
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-""mocha --compilers js:babel-core/register""""" MOVEMENT {{{1
+""""" MOVEMENT {{{1
 
 """ Better split navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-
-
-
-
-
-
-""""" AESTHETICS {{{1
-
-""" UI
-if exists('+colorcolumn')
-  set colorcolumn=80       " highlight column 80
-  highlight ColorColumn ctermbg=0 guibg=lightgrey
-end
-set cursorline             " highlight current line
-set list listchars=trail:· " use · to indicate trailing chars
-set number                 " show current line number
-set showcmd                " show current command in status line
-autocmd InsertEnter * set cul
-autocmd InsertLeave * set nocul
-
-""" Use 24-bit colours
-if (has("nvim"))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-""" Colourscheme
-syntax on " syntax highlight
-colorscheme onedark
-let g:onedark_termcolors=256
-
-""" Fix for cursor when running under tmux
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
-""" Enable syntax highlighting in markdown blocks
-let g:markdown_fenced_languages = [
-      \'coffee',
-      \'css',
-      \'javascript',
-      \'js=javascript',
-      \'json=javascript',
-      \'ruby',
-      \'sass',
-      \'xml',
-      \'html',
-      \'elixir'
-      \]
 
 """ vim-test
 nmap <silent> <leader>t :TestNearest<CR>
@@ -164,7 +119,7 @@ nnoremap <silent> <Leader>> :exe "vertical resize +10"
 nnoremap <silent> <Leader>< :exe "vertical resize -10"
 
 """ vim copy
-nnoremap <silent> <Leader>c :!tee >(pbcopy)
+nnoremap <silent> <Leader>c :pbcopy!
 
 """ vim tabs
 nnoremap th  :tabfirst<CR>
@@ -176,33 +131,69 @@ nnoremap tn  :tabnext<Space>
 nnoremap tm  :tabm<Space>
 nnoremap td  :tabclose<CR>
 
-let test#strategy = 'vimux' " use vimux test strategy
+""" Refactoring Ruby bindings
+nnoremap <leader>rap  :RAddParameter<cr>
+nnoremap <leader>rcpc :RConvertPostConditional<cr>
+nnoremap <leader>rel  :RExtractLet<cr>
+vnoremap <leader>rec  :RExtractConstant<cr>
+vnoremap <leader>relv :RExtractLocalVariable<cr>
+nnoremap <leader>rit  :RInlineTemp<cr>
+vnoremap <leader>rrlv :RRenameLocalVariable<cr>
+vnoremap <leader>rriv :RRenameInstanceVariable<cr>
+vnoremap <leader>rem  :RExtractMethod<cr>
 
-""" Write/Quit
-command! WQ wq " WQ = wq
-command! Wq wq " Wq = wq
-command! W w   " W = w
-command! Q q   " Q = q
-
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
-
-" Elixir
-let g:alchemist_tag_disable = 1
-
-" Get off my lawn
+""" Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-set timeoutlen=1000 ttimeoutlen=0
+""" bind \a to :Ag
+nnoremap \a :Ag<SPACE>
 
-""" Neomake
-let g:neomake_verbose=3
-let g:neomake_open_list=2
-let g:neomake_list_height=20
-autocmd! BufWritePost * Neomake
+""""" AESTHETICS {{{1
 
-let mapleader=","
+""" UI
+if exists('+colorcolumn')
+  set colorcolumn=80       " highlight column 80
+end
+set cursorline             " highlight current line
+set list listchars=trail:· " use · to indicate trailing chars
+set number                 " show current line number
+set relativenumber         " relative line numbers
+set showcmd                " show current command in status line
+
+""" Use 24-bit colours
+if (has("nvim"))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+""" Colourscheme
+syntax on " syntax highlight
+
+let g:onedark_terminal_italics=1
+colorscheme onedark
+
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags = 'li\|p'
+
+""" Fix for cursor when running under tmux
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+""" Enable syntax highlighting in markdown blocks
+let g:markdown_fenced_languages = [
+      \'coffee',
+      \'css',
+      \'javascript',
+      \'js=javascript',
+      \'json=javascript',
+      \'ruby',
+      \'sass',
+      \'xml',
+      \'html',
+      \'elixir'
+      \]
 

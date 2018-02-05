@@ -23,8 +23,8 @@
 [rebase]
   autosquash = true
 [user]
-  name = Simon Fletcher
-  email = simonfletcher0@gmail.com
+	name = Simon Fletcher
+	email = simonfletcher0@gmail.com
 [filter "lfs"]
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
