@@ -101,8 +101,16 @@ alias godocs="godoc --http=:6060 -d"
 # NeoVim Alias
 alias v='nvim'
 
+# AWS SSH
 aws_ssh() {
   ssh -i ~/.ssh/id_rsa.pub simon@$1
+}
+
+# Rainy Mood
+rainymood() {
+  FILE=$((RANDOM%4))
+  URL="https://rainymood.com/audio1110/${FILE}.ogg"
+  mpv "$URL" && rainymood
 }
 
 # Source Files

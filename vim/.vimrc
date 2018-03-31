@@ -23,6 +23,8 @@ Plug 'ecomba/vim-ruby-refactoring' " Quickly refactor ruby code https://github.c
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -91,6 +93,7 @@ endif
 let g:deoplete#enable_at_startup = 1
 
 let test#strategy = 'vimux' " use vimux test strategy
+
 
 
 """"" MOVEMENT {{{1

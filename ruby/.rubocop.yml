@@ -15,7 +15,10 @@ Style/BlockDelimiters:
 Metrics/ModuleLength:
   Enabled: false
 
-Style/BlockLength:
+Style/GuardClause:
+  Enabled: false
+
+Metrics/BlockLength:
   Exclude:
     - 'Rakefile'
     - '**/*.rake'
