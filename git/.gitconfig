@@ -10,9 +10,22 @@
   branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
   ci = commit -v
   co = checkout
-  pf = push --force-with-lease
   st = status
   lg = log --pretty=oneline
+  g = grep --break --heading --line-number
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
+  ll = log --pretty=oneline --graph --abbrev-commit
+  lm = log --pretty=format:'* %s (%h)'
+  patch = !git --no-pager diff --no-color
+  p = push
+  pf = push --force
+  pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+  show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
+  st = status
+  stl = ls-files -m -o --exclude-standard
+  sts = status -sb
+  unstage = reset --hard HEAD
 [core]
   excludesfile = /Users/simonfletcher/.global_ignore
   autocrlf = input

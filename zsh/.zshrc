@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/simonfletcher/.oh-my-zsh
+export USER='simonfletcher'
+export ZSH="/Users/$USER/.oh-my-zsh"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -54,9 +55,6 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
 
 export PATH="./.bundle/bin:$PATH"
 
-# Bloombox
-export PATH="$PATH:/usr/local/bloombox/bin"
-
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -71,7 +69,8 @@ export KEYTIMEOUT=1
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+export SSH_KEY_PATH="~/.ssh/id_rsa"
+ssh-add ~/.ssh/id_rsa &>/dev/null
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -84,12 +83,6 @@ export KEYTIMEOUT=1
 alias zshconfig="v ~/.zshrc"
 alias ohmyzsh="v ~/.oh-my-zsh"
 
-# better bundle alias
-alias b='bundle install --binstubs .bundle/bin --path .bundle/gems'
-
-# Wipe rails DB
-alias pdb="bundle exec rake db:drop db:create db:migrate db:seed RAILS_ENV=development"
-
 # List PSQL processes
 alias listpsql="lsof -i tcp:5432"
 alias listforeman="lsof -i tcp:5000"
@@ -101,10 +94,18 @@ alias godocs="godoc --http=:6060 -d"
 # NeoVim Alias
 alias v='nvim'
 
-# AWS SSH
-aws_ssh() {
-  ssh -i ~/.ssh/id_rsa.pub simon@$1
-}
+# Git
+alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
+
+# Rails
+alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
+alias s="rspec"
+
+# better bundle alias
+alias b='bundle install --binstubs .bundle/bin --path .bundle/gems'
+
+# Wipe rails DB
+alias pdb="bundle exec rake db:drop db:create db:migrate db:seed RAILS_ENV=development"
 
 # Rainy Mood
 rainymood() {
