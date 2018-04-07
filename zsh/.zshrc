@@ -129,20 +129,5 @@ export PATH="/usr/local/python/bin:$PATH"
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
-# Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-export SPACESHIP_TIME_SHOW=true
-export SPACESHIP_NODE_SHOW=false
-export SPACESHIP_BATTERY_SHOW='always'
-export SPACESHIP_HOST_SHOW_FULL=true
-export SPACESHIP_HOST_SHOW='always'
-prompt spaceship
-
 # ZSH Completions
 fpath=(/usr/local/share/zsh-completions $fpath)
-
-# Launchy
-LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
-if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
-  . $LUNCHY_DIR/lunchy-completion.zsh
-fi

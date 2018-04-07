@@ -26,7 +26,6 @@ mkdir -p ~/.git_template
 . "$DOTFILES_DIR/install/brew-cask.sh"
 . "$DOTFILES_DIR/install/zsh.sh"
 . "$DOTFILES_DIR/install/neovim.sh"
-. "$DOTFILES_DIR/install/finalise.sh"
 
 # Bunch of symlinks
 
@@ -66,6 +65,8 @@ ln -sfv "$DOTFILES_DIR/vim/.vimrc" ~
 
 ### ZSH
 ln -sfv "$DOTFILES_DIR/zsh/.zshrc" ~
+
+. "$DOTFILES_DIR/install/finalise.sh"
 
 # Install extra stuff
 if [ -d "$DOTFILES_EXTRA_DIR" -a -f "$DOTFILES_EXTRA_DIR/install.sh" ]; then
