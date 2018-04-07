@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-local fmt="$1"; shift
-
-# shellcheck disable=SC2059
-printf "\n$fmt\n" "$@"

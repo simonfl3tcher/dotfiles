@@ -74,5 +74,3 @@ ln -sfv "$DOTFILES_DIR/zsh/.zshrc" ~
 if [ -d "$DOTFILES_EXTRA_DIR" -a -f "$DOTFILES_EXTRA_DIR/install.sh" ]; then
   . "$DOTFILES_EXTRA_DIR/install.sh"
 fi
-
-. "$DOTFILES_DIR/install/finalise.sh"

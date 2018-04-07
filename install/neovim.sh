@@ -8,4 +8,6 @@ wget --quiet https://github.com/neovim/neovim/releases/download/nightly/nvim.app
 chmod +x nvim
 sudo mv nvim /usr/bin
 mkdir -p ~/.config/nvim
+
+rm -Rf ~/.config/nvim/init.vim # Remove if exists
 ln -s ~/.vimrc ~/.config/nvim/init.vim

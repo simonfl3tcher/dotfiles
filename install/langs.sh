@@ -31,8 +31,7 @@ install_asdf_language() {
   fi
 }
 
-fancy-echo "Installing latest Ruby..."
-
+asdf install ruby 2.3.1
 install_asdf_language "ruby"
 
 gem update --system
@@ -41,6 +40,5 @@ gem-install-or-update "bundler"
 gem-install-or-update "launchy"
 gem-install-or-update "rails"
 
-fancy-echo "Installing latest Node..."
 bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
 install_asdf_language "nodejs"
