@@ -3,6 +3,8 @@
 # Get current dir (so run this script from anywhere)
 export DOTFILES_DIR
 export USER
+export DOTFILES_CACHE
+export DOTFILES_EXTRA_DIR
 USER='mrsimonfletcher'
 DOTFILES_DIR="/Users/$USER/dotfiles"
 DOTFILES_CACHE="$DOTFILES_DIR/.cache.sh"
@@ -26,7 +28,6 @@ mkdir -p ~/.git_template
 . "$DOTFILES_DIR/install/brew-cask.sh"
 . "$DOTFILES_DIR/install/zsh.sh"
 . "$DOTFILES_DIR/install/neovim.sh"
-. "$DOTFILES_DIR/install/finalise.sh"
 
 # Bunch of symlinks
 
@@ -71,3 +72,5 @@ ln -sfv "$DOTFILES_DIR/zsh/.zshrc" ~
 if [ -d "$DOTFILES_EXTRA_DIR" -a -f "$DOTFILES_EXTRA_DIR/install.sh" ]; then
   . "$DOTFILES_EXTRA_DIR/install.sh"
 fi
+
+. "$DOTFILES_DIR/install/finalise.sh"

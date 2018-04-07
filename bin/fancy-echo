@@ -1,16 +1,6 @@
 #!/usr/bin/env bash
 
-fancy_echo() {
-  local fmt="$1"; shift
+local fmt="$1"; shift
 
-  # shellcheck disable=SC2059
-  printf "\n$fmt\n" "$@"
-}
-
-gem_install_or_update() {
-  if gem list "$1" --installed > /dev/null; then
-    gem update "$@"
-  else
-    gem install "$@"
-  fi
-}
+# shellcheck disable=SC2059
+printf "\n$fmt\n" "$@"

@@ -25,6 +25,7 @@ apps=(
   python
   postgresql
   redis
+  the_silver_searcher
   tmux
   vim
   watchman
