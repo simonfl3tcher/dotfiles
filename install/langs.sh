@@ -31,17 +31,16 @@ install_asdf_language() {
   fi
 }
 
-fancy_echo "Installing latest Ruby..."
+fancy-echo "Installing latest Ruby..."
 
 install_asdf_language "ruby"
 
 gem update --system
-gem_install_or_update "tmuxinator"
-gem_install_or_update "bundler"
-gem_install_or_update "launchy"
-gem_install_or_update "rails"
+gem-install-or-update "tmuxinator"
+gem-install-or-update "bundler"
+gem-install-or-update "launchy"
+gem-install-or-update "rails"
 
-
-fancy_echo "Installing latest Node..."
+fancy-echo "Installing latest Node..."
 bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
 install_asdf_language "nodejs"
