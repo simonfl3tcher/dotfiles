@@ -25,8 +25,8 @@ mkdir -p ~/.git_template
 . "$DOTFILES_DIR/install/langs.sh"
 . "$DOTFILES_DIR/install/brew-cask.sh"
 . "$DOTFILES_DIR/install/zsh.sh"
-. "$DOTFILES_DIR/install/symlinks.sh"
 . "$DOTFILES_DIR/install/neovim.sh"
+. "$DOTFILES_DIR/install/finalise.sh"
 
 # Bunch of symlinks
 
