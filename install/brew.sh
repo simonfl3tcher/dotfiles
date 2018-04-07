@@ -13,20 +13,24 @@ brew upgrade
 
 apps=(
   ctags
-  git
   git-extras
+  gnupg
+  gnupg2
   gnu-sed --with-default-names
   grep --with-default-names
   httpie
+  hub
   imagemagick
-  neovim
+  mpv
   python
   postgresql
   redis
   tmux
   vim
+  watchman
   wget
   wifi-password
+  yarn
   zsh
   zsh-completions
 )

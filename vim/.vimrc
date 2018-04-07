@@ -1,4 +1,5 @@
 " vim:fdm=marker:fen:fdl=0
+" vim:fdm=marker:fen:fdl=0
 """"" PLUGINS {{{1
 
 call plug#begin('~/.vim/plugged')
@@ -179,6 +180,9 @@ syntax on " syntax highlight
 
 let g:onedark_terminal_italics=1
 colorscheme onedark
+
+""" GO
+let g:go_version_warning = 0
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'

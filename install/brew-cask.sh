@@ -15,6 +15,7 @@ apps=(
   caffeine
   dropbox
   flux
+  github
   graphiql
   google-chrome
   iterm2
@@ -27,4 +28,4 @@ apps=(
   zoomus
 )
 
-brew cask install "${apps[@]}"
+brew cask --force install "${apps[@]}"

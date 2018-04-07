@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export USER='simonfletcher'
+export USER='mrsimonfletcher'
 export ZSH="/Users/$USER/.oh-my-zsh"
 
 # Set name of the theme to load.
@@ -114,9 +114,6 @@ rainymood() {
   mpv "$URL" && rainymood
 }
 
-# Source Files
-source ~/.bin/tmuxinator.zsh
-
 # use vim bindings
 bindkey -v
 # reeable Ctrl-R for history (unbound with vim bindings)
@@ -126,6 +123,7 @@ bindkey '^R' history-incremental-search-backward
 export GOPATH=$HOME/go
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH=$GOPATH/bin:$PATH
+export PATH="/usr/local/python/bin:$PATH"
 
 # ASDF
 . $HOME/.asdf/asdf.sh
@@ -139,3 +137,12 @@ export SPACESHIP_BATTERY_SHOW='always'
 export SPACESHIP_HOST_SHOW_FULL=true
 export SPACESHIP_HOST_SHOW='always'
 prompt spaceship
+
+# ZSH Completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+# Launchy
+LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
+if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
+  . $LUNCHY_DIR/lunchy-completion.zsh
+fi

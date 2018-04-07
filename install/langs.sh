@@ -1,24 +1,47 @@
 if ! is-macos -o ! is-executable brew; then
-  echo "Skipped: gem"
+  echo "Skipped: langs"
   return
 fi
 
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+if [ ! -d "$HOME/.asdf" ]; then
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.3.0
+fi
 
-echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.zshrc
-echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.zshrc
+install_asdf_plugin() {
+  local name="$1"
+  local url="$2"
 
-asdf install ruby 2.5.0
-asdf global ruby 2.5.0
+  if ! asdf plugin-list | grep -Fq "$name"; then
+    asdf plugin-add "$name" "$url"
+  fi
+}
 
-asdf install nodejs 9.10.1
-asdf global nodejs 2.5.0
+source "$HOME/.asdf/asdf.sh"
+install_asdf_plugin "ruby" "https://github.com/asdf-vm/asdf-ruby.git"
+install_asdf_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
 
-gem install lunchy
-gem install rails
+install_asdf_language() {
+  local language="$1"
+  local version
+  version="$(asdf list-all "$language" | tail -1)"
 
-packages=(
-  npm
-)
+  if ! asdf list "$language" | grep -Fq "$version"; then
+    asdf install "$language" "$version"
+    asdf global "$language" "$version"
+  fi
+}
 
-npm install -g "${packages[@]}"
+fancy_echo "Installing latest Ruby..."
+
+install_asdf_language "ruby"
+
+gem update --system
+gem_install_or_update "tmuxinator"
+gem_install_or_update "bundler"
+gem_install_or_update "launchy"
+gem_install_or_update "rails"
+
+
+fancy_echo "Installing latest Node..."
+bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
+install_asdf_language "nodejs"
