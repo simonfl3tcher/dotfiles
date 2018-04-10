@@ -41,4 +41,5 @@ gem-install-or-update "launchy"
 gem-install-or-update "rails"
 
 bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
+asdf install nodejs 4.4.3
 install_asdf_language "nodejs"
