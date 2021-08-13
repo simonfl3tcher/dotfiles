@@ -6,7 +6,7 @@ export ZSH="/Users/$USER/.oh-my-zsh"
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="dracula"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -70,7 +70,6 @@ export KEYTIMEOUT=1
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/id_rsa"
-ssh-add ~/.ssh/id_rsa &>/dev/null
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -101,12 +100,6 @@ alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
 alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
 alias s="rspec"
 
-# better bundle alias
-alias b='bundle install --binstubs .bundle/bin --path .bundle/gems'
-
-# Wipe rails DB
-alias pdb="bundle exec rake db:drop db:create db:migrate db:seed RAILS_ENV=development"
-
 # Rainy Mood
 rainymood() {
   FILE=$((RANDOM%4))
@@ -124,6 +117,7 @@ export GOPATH=$HOME/go
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH=$GOPATH/bin:$PATH
 export PATH="/usr/local/python/bin:$PATH"
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # ASDF
 . $HOME/.asdf/asdf.sh

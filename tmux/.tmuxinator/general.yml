@@ -4,13 +4,8 @@ name: general
 root: ~/Documents/
 
 windows:
-  - editor:
-      layout: main-vertical
-      panes:
-        - v
   - console:
-      layout: tiled
+      layout: main-horizontal
       panes:
-        - 
         - 
         - 

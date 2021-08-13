@@ -4,6 +4,8 @@
   default = current
 [color]
   ui = auto
+[pull]
+  rebase = false
 [alias]
   aa = add --all
   ap = add --patch
@@ -20,7 +22,6 @@
   patch = !git --no-pager diff --no-color
   p = push
   pf = push --force
-  pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
   show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
   st = status
   stl = ls-files -m -o --exclude-standard
@@ -43,3 +44,7 @@
 	smudge = git-lfs smudge -- %f
   required = true
 	process = git-lfs filter-process
+[github]
+	user = mrsimonfletcher
+[credential]
+	helper = osxkeychain

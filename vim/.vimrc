@@ -16,16 +16,17 @@ Plug 'tpope/vim-commentary'   " better commenting
 Plug 'tpope/vim-fugitive'     " git plugin
 Plug 'tpope/vim-rails'        " rails plugin
 Plug 'rking/ag.vim'           " silver searcher
-Plug 'kien/ctrlp.vim'         " Quick file fuzzy search
 Plug 'craigemery/vim-autotag'
-Plug 'neomake/neomake'
 Plug 'fatih/vim-go' 
-Plug 'ecomba/vim-ruby-refactoring' " Quickly refactor ruby code https://github.com/ecomba/vim-ruby-refactoring#default-bindings
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'scrooloose/nerdcommenter'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -71,8 +72,6 @@ set undoreload=10000        " set lines to save for undo
 """ Buffers
 set hidden " allow hidden buffers
 
-autocmd! BufWritePost * Neomake
-
 set timeoutlen=1000 ttimeoutlen=0
 
 """ Write/Quit
@@ -80,9 +79,6 @@ command! WQ wq " WQ = wq
 command! Wq wq " Wq = wq
 command! W w   " W = w
 command! Q q   " Q = q
-
-""" Neomake
-let g:neomake_open_list=2
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -93,7 +89,20 @@ else
 endif
 let g:deoplete#enable_at_startup = 1
 
-let test#strategy = 'vimux' " use vimux test strategy
+let test#strategy = 'neovim' " use neovim test strategy
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -104,6 +113,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+nnoremap <silent> <C-p> :FZF -m<cr>
 
 """ vim-test
 nmap <silent> <leader>t :TestNearest<CR>
@@ -123,7 +134,7 @@ nnoremap <silent> <Leader>> :exe "vertical resize +10"
 nnoremap <silent> <Leader>< :exe "vertical resize -10"
 
 """ vim copy
-nnoremap <silent> <Leader>c :pbcopy!
+nnoremap <silent> <Leader>c :!pbcopy<cr>
 
 """ vim tabs
 nnoremap th  :tabfirst<CR>
@@ -154,8 +165,14 @@ nnoremap <Down> :echoe "Use j"<CR>
 
 """ bind \a to :Ag
 nnoremap \a :Ag<SPACE>
+nnoremap \f :Files<CR>
 
-""""" AESTHETICS {{{1
+
+
+
+
+
+"""" AESTHETICS {{{1
 
 """ UI
 if exists('+colorcolumn')
@@ -180,6 +197,7 @@ syntax on " syntax highlight
 
 let g:onedark_terminal_italics=1
 colorscheme onedark
+""" colorscheme dracula
 
 """ GO
 let g:go_version_warning = 0
@@ -203,4 +221,15 @@ let g:markdown_fenced_languages = [
       \'html',
       \'elixir'
       \]
+
+
+
+
+
+
+
+
+
+
+
 

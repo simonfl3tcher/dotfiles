@@ -10,7 +10,6 @@ brew tap caskroom/fonts
 # Install packages
 
 apps=(
-  1password
   adobe-acrobat-reader
   caffeine
   dropbox
@@ -28,4 +27,4 @@ apps=(
   zoomus
 )
 
-brew cask --force install "${apps[@]}"
+brew cask install "${apps[@]}"
