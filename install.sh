@@ -5,7 +5,7 @@ export DOTFILES_DIR
 export USER
 export DOTFILES_CACHE
 export DOTFILES_EXTRA_DIR
-USER='mrsimonfletcher'
+USER='simonfl3tcher'
 DOTFILES_DIR="/Users/$USER/dotfiles"
 DOTFILES_CACHE="$DOTFILES_DIR/.cache.sh"
 DOTFILES_EXTRA_DIR="$HOME/.extra"

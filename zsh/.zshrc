@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export USER='mrsimonfletcher'
+export USER='simonfl3tcher'
 export ZSH="/Users/$USER/.oh-my-zsh"
 
 # Set name of the theme to load.
@@ -125,3 +125,12 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 
 # ZSH Completions
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+# Brew
+export PATH=/opt/homebrew/bin:$PATH
+
+# NVM
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
