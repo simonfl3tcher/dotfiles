@@ -17,7 +17,6 @@ install_asdf_plugin() {
 }
 
 source "$HOME/.asdf/asdf.sh"
-install_asdf_plugin "ruby" "https://github.com/asdf-vm/asdf-ruby.git"
 install_asdf_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
 
 install_asdf_language() {
@@ -30,15 +29,6 @@ install_asdf_language() {
     asdf global "$language" "$version"
   fi
 }
-
-asdf install ruby 2.3.1
-install_asdf_language "ruby"
-
-gem update --system
-gem-install-or-update "tmuxinator"
-gem-install-or-update "bundler"
-gem-install-or-update "launchy"
-gem-install-or-update "rails"
 
 bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
 asdf install nodejs 4.4.3

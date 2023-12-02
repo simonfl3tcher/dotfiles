@@ -61,8 +61,6 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Default editor settings
-export EDITOR=/usr/local/bin/nvim
-export VISUAL=/usr/local/bin/nvim
 export KEYTIMEOUT=1
 
 # Compilation flags
@@ -129,8 +127,18 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # Brew
 export PATH=/opt/homebrew/bin:$PATH
 
-# NVM
+# Go Lang
+export PATH=/usr/local/go/bin:$PATH
 
+# NVM
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# pnpm
+export PNPM_HOME="/Users/simonfl3tcher/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

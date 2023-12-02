@@ -20,7 +20,6 @@ Plug 'craigemery/vim-autotag'
 Plug 'fatih/vim-go' 
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'scrooloose/nerdcommenter'
@@ -184,13 +183,6 @@ set number                 " show current line number
 set relativenumber         " relative line numbers
 set showcmd                " show current command in status line
 
-""" Use 24-bit colours
-if (has("nvim"))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-if (has("termguicolors"))
-  set termguicolors
-endif
 
 """ Colourscheme
 syntax on " syntax highlight

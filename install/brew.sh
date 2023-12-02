@@ -16,14 +16,12 @@ apps=(
   git-extras
   gnupg
   gnupg2
-  gnu-sed --with-default-names
-  grep --with-default-names
   httpie
   hub
   imagemagick
   mpv
   python
-  postgresql
+  postgresql@14
   redis
   the_silver_searcher
   tmux

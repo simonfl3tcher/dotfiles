@@ -3,28 +3,28 @@ if ! is-macos -o ! is-executable brew; then
   return
 fi
 
-brew tap caskroom/versions
-brew tap caskroom/cask
-brew tap caskroom/fonts
+brew tap homebrew/cask-versions
+brew tap homebrew/cask
+brew tap homebrew/cask-fonts
 
 # Install packages
 
 apps=(
-  adobe-acrobat-reader
   caffeine
   dropbox
-  flux
-  github
-  graphiql
-  google-chrome
   iterm2
   ngrok
   postman
-  sketch
+  figma
   slack
   spotify
+  rectangle
   whatsapp
-  zoomus
+  zoom
+  visual-studio-code
+  raycast
+  notion
+  kap
 )
 
-brew cask install "${apps[@]}"
+brew install --cask  "${apps[@]}"
