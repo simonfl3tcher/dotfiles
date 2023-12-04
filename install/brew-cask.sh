@@ -10,12 +10,12 @@ brew tap homebrew/cask-fonts
 # Install packages
 
 apps=(
-  caffeine
   dropbox
   iterm2
   ngrok
   postman
   figma
+  loom
   slack
   spotify
   rectangle
